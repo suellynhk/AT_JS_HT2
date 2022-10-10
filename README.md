@@ -77,6 +77,6 @@ Don't forget to save the changes.
 ##### &emsp; Note: It will create a folder named 'newman' where the html file will be placed.
 
 ## ✨ Further improvement:
-For some reason I couldn't run the collection from the CLI using Newman. 
+For some reason I couldn't run the collection from the CLI using Newman with the OAuth automated with Postman. 
 Everything works fine on Postman, but it seems the http header 'authorization' are not beeing exported along with the collection and even adding it manually, it is still not working.
 I searched about it and still haven't found a solution.
