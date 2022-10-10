@@ -8,6 +8,38 @@
 	},
 	"item": [
 		{
+			"name": "Check user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"foo\"\n}"
+				},
+				"url": {
+					"raw": "https://api.dropboxapi.com/2/check/user",
+					"protocol": "https",
+					"host": [
+						"api",
+						"dropboxapi",
+						"com"
+					],
+					"path": [
+						"2",
+						"check",
+						"user"
+					]
+				},
+				"description": "It will validate the access token, it's only for testing the code and connection to the Dropbox API."
+			},
+			"response": []
+		},
+		{
 			"name": "Upload file",
 			"event": [
 				{
@@ -230,61 +262,11 @@
 		}
 	],
 	"auth": {
-		"type": "oauth2",
-		"oauth2": [
+		"type": "bearer",
+		"bearer": [
 			{
-				"key": "addTokenTo",
-				"value": "header",
-				"type": "string"
-			},
-			{
-				"key": "client_authentication",
-				"value": "body",
-				"type": "string"
-			},
-			{
-				"key": "scope",
-				"value": "files.metadata.read files.content.write ",
-				"type": "string"
-			},
-			{
-				"key": "clientSecret",
-				"value": "{{client_secret}}",
-				"type": "string"
-			},
-			{
-				"key": "clientId",
-				"value": "{{client_id}}",
-				"type": "string"
-			},
-			{
-				"key": "accessTokenUrl",
-				"value": "https://api.dropboxapi.com/oauth2/token",
-				"type": "string"
-			},
-			{
-				"key": "authUrl",
-				"value": "https://www.dropbox.com/oauth2/authorize?client_id=<APP_KEY>&response_type=code",
-				"type": "string"
-			},
-			{
-				"key": "tokenName",
-				"value": "dropbox-token",
-				"type": "string"
-			},
-			{
-				"key": "grant_type",
-				"value": "authorization_code",
-				"type": "string"
-			},
-			{
-				"key": "useBrowser",
-				"value": true,
-				"type": "boolean"
-			},
-			{
-				"key": "redirect_uri",
-				"value": "https://www.postman.com",
+				"key": "token",
+				"value": "{{access_token}}",
 				"type": "string"
 			}
 		]
@@ -307,6 +289,23 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "client_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
 		}
 	]
 }

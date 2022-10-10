@@ -10,6 +10,7 @@ Repository created for [Dropbox API](https://www.dropbox.com/developers/document
 - [Newman](https://www.npmjs.com/package/newman)
 
 ## ✨ Prerequisite:
+- [Dropbox account + Application created](https://www.dropbox.com/developers/apps)
 - [Node.js](https://nodejs.org/)
 
 ## ✨ Run the collection in Postman:
@@ -20,7 +21,7 @@ Repository created for [Dropbox API](https://www.dropbox.com/developers/document
 
 #### 3. In Authorization, scroll till the button 'Get New Access Token' and click on it.
 
-Note: You can log in with your credentials(if you are already registered) or with your google account. Please, make sure your browser allows pop ups.
+Note: You can log in with your credentials (if you are already registered) or with your Google account. Please, make sure your browser allows pop-ups.
 
 #### 4. Run the collection.
 
@@ -32,19 +33,46 @@ Note: You can log in with your credentials(if you are already registered) or wit
 #### 2. Navigate to the folder:
 `cd AT_JS_HT2`
 
-#### 3. Install Newman (if you don't have it installed):
+#### 3. Configure your Dropbox Application: 
+There are required scopes you need to set on Permissions tab:'files.metadata.read', 'files.content.write'.
+
+#### 4. Edit the Variable object on DropboxAPI_collection.json file: 
+Get the App Key, App Secret and a Generated Access Token information of your Dropbox Application on the Settings tab to set the 'variable' object:
+```
+"variable": [
+		{
+			"key": "client_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "string"
+		}
+]
+```
+For the "client_id" key, set its value with the "App key" value you've got from the Dropbox website. For the "client_secret" key, set its value with the "App secret" value. Lastly, for the "access_token" key, you'll need to Generate an access token and set this value with the token you've got from the Dropbox website.
+Don't forget to save the changes.
+
+#### 5. Install Newman (if you don't have it installed):
 `npm install -g newman`
 
-#### 4. Run the collection:
-`newman run DropboxAPI.postman_collection.json -e DropboxEnv.postman_environment.json`
+#### 6. Run the collection:
+`newman run DropboxAPI_collection.json
 
-#### 5. Newman Reporter (optional):
+#### 7. Newman Reporter (optional):
  
 ##### &emsp; 1. Install Newman Reporter: 
 &emsp; `npm install -g newman-reporter-html`
 
 ##### &emsp; 2. Run the collection:
-&emsp; `newman run DropboxAPI.postman_collection.json -e DropboxEnv.postman_environment.json -r cli,html`
+&emsp; `newman run DropboxAPI_collection.json -r cli,html`
 
 ##### &emsp; Note: It will create a folder named 'newman' where the html file will be placed.
 
