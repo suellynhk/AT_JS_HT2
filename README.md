@@ -10,7 +10,6 @@ Repository created for [Dropbox API](https://www.dropbox.com/developers/document
 - [Newman](https://www.npmjs.com/package/newman)
 
 ## ✨ Prerequisite:
-- [Dropbox account + Application created](https://www.dropbox.com/developers/apps)
 - [Node.js](https://nodejs.org/)
 
 ## ✨ Run the collection in Postman:
@@ -31,7 +30,7 @@ Repository created for [Dropbox API](https://www.dropbox.com/developers/document
 `npm install -g newman`
 
 #### 4. Run the collection:
-`newman run DropboxAPI_collection.json
+`newman run DropboxAPItesting_collection.json
 
 #### 5. Newman Reporter (optional):
  
@@ -39,6 +38,6 @@ Repository created for [Dropbox API](https://www.dropbox.com/developers/document
 &emsp; `npm install -g newman-reporter-html`
 
 ##### &emsp; 2. Run the collection:
-&emsp; `newman run DropboxAPI_collection.json -r cli,html`
+&emsp; `newman run DropboxAPItesting_collection.json -r cli,html`
 
 ##### &emsp; Note: It will create a folder named 'newman' where the html file will be placed.
