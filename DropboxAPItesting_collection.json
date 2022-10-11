@@ -1,44 +1,12 @@
 {
 	"info": {
-		"_postman_id": "b925ffaa-34e9-4f16-93ac-2eae241e58e0",
-		"name": "DropboxAPI",
+		"_postman_id": "158cef80-664d-48f0-93ad-2569bf4e3031",
+		"name": "DropboxAPI -Bearer Token",
 		"description": "API Documentation: [https://www.dropbox.com/developers/documentation/http/documentation](https://www.dropbox.com/developers/documentation/http/documentation)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20952083"
 	},
 	"item": [
-		{
-			"name": "Check user",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"query\": \"foo\"\n}"
-				},
-				"url": {
-					"raw": "https://api.dropboxapi.com/2/check/user",
-					"protocol": "https",
-					"host": [
-						"api",
-						"dropboxapi",
-						"com"
-					],
-					"path": [
-						"2",
-						"check",
-						"user"
-					]
-				},
-				"description": "It will validate the access token, it's only for testing the code and connection to the Dropbox API."
-			},
-			"response": []
-		},
 		{
 			"name": "Upload file",
 			"event": [
@@ -58,6 +26,37 @@
 							"    pm.expect(pm.response.text()).to.include('\"server_modified\":');\r",
 							"});\r",
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const token_p1 = 'z03OB_uTLT'\r",
+							"const token_p2 = 'wAAAAAAAAAA'\r",
+							"const token_p3 = 'SlrztyREMI'\r",
+							"const token_p4 = 'v4ReUcYIA-'\r",
+							"const token_p5 = '9k-Bnkv26UkB'\r",
+							"const token_p6 = 'ye6ghPJo1zr'\r",
+							"\r",
+							"pm.collectionVariables.set(\"refresh_token\", token_p1 + token_p2 + token_p3 + token_p4 + token_p5 + token_p6);\r",
+							"const refresh_token = pm.variables.get(\"refresh_token\");\r",
+							"const client_id = pm.variables.get(\"client_id\");\r",
+							"\r",
+							"const urlRef = `https://api.dropbox.com/oauth2/token?grant_type=refresh_token&refresh_token=${refresh_token}&client_id=${client_id}`\r",
+							"const postRequest = {\r",
+							"  url: urlRef,\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Content-Type': 'application/json'\r",
+							"  }\r",
+							"};\r",
+							"pm.sendRequest(postRequest, (error, response) => {\r",
+							"  const { access_token } = response.json();\r",
+							"  pm.globals.set(\"access_token\", access_token);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -294,18 +293,12 @@
 	"variable": [
 		{
 			"key": "client_id",
-			"value": "",
+			"value": "3ei3699sgjbf5a0",
 			"type": "string"
 		},
 		{
-			"key": "client_secret",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "access_token",
-			"value": "",
-			"type": "string"
+			"key": "refresh_token",
+			"value": ""
 		}
 	]
 }
