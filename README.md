@@ -30,7 +30,7 @@ Repository created for [Dropbox API](https://www.dropbox.com/developers/document
 `npm install -g newman`
 
 #### 4. Run the collection:
-`newman run DropboxAPItesting_collection.json
+`newman run DropboxAPItesting_collection.json`
 
 #### 5. Newman Reporter (optional):
  
