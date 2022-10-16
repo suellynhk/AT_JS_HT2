@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "158cef80-664d-48f0-93ad-2569bf4e3031",
-		"name": "DropboxAPI -Bearer Token",
+		"name": "DropboxAPI- Automated",
 		"description": "API Documentation: [https://www.dropbox.com/developers/documentation/http/documentation](https://www.dropbox.com/developers/documentation/http/documentation)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "20952083"
@@ -34,29 +34,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"const token_p1 = 'z03OB_uTLT'\r",
-							"const token_p2 = 'wAAAAAAAAAA'\r",
-							"const token_p3 = 'SlrztyREMI'\r",
-							"const token_p4 = 'v4ReUcYIA-'\r",
-							"const token_p5 = '9k-Bnkv26UkB'\r",
-							"const token_p6 = 'ye6ghPJo1zr'\r",
-							"\r",
-							"pm.collectionVariables.set(\"refresh_token\", token_p1 + token_p2 + token_p3 + token_p4 + token_p5 + token_p6);\r",
-							"const refresh_token = pm.variables.get(\"refresh_token\");\r",
-							"const client_id = pm.variables.get(\"client_id\");\r",
-							"\r",
-							"const urlRef = `https://api.dropbox.com/oauth2/token?grant_type=refresh_token&refresh_token=${refresh_token}&client_id=${client_id}`\r",
-							"const postRequest = {\r",
-							"  url: urlRef,\r",
-							"  method: 'POST',\r",
-							"  header: {\r",
-							"    'Content-Type': 'application/json'\r",
-							"  }\r",
-							"};\r",
-							"pm.sendRequest(postRequest, (error, response) => {\r",
-							"  const { access_token } = response.json();\r",
-							"  pm.globals.set(\"access_token\", access_token);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -276,6 +254,31 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
+					"const token_p1 = 'z03OB_uTLT'",
+					"const token_p2 = 'wAAAAAAAAAA'",
+					"const token_p3 = 'SlrztyREMI'",
+					"const token_p4 = 'v4ReUcYIA-'",
+					"const token_p5 = '9k-Bnkv26UkB'",
+					"const token_p6 = 'ye6ghPJo1zr'",
+					"",
+					"pm.environment.set(\"refresh_token\", token_p1 + token_p2 + token_p3 + token_p4 + token_p5 + token_p6);",
+					"",
+					"const client_id = pm.environment.get(\"client_id\");",
+					"const refresh_token = pm.environment.get(\"refresh_token\");",
+					"",
+					"const urlRef = `https://api.dropbox.com/oauth2/token?grant_type=refresh_token&refresh_token=${refresh_token}&client_id=${client_id}`",
+					"const postRequest = {",
+					"    url: urlRef,",
+					"    method: 'POST',",
+					"    header: {",
+					"        'Content-Type': 'application/json'",
+					"    }",
+					"};",
+					"pm.sendRequest(postRequest, (error, response) => {",
+					"    const { access_token } = response.json();",
+					"    pm.environment.set(\"access_token\", access_token);",
+					"});",
+					"",
 					""
 				]
 			}
@@ -288,17 +291,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "client_id",
-			"value": "3ei3699sgjbf5a0",
-			"type": "string"
-		},
-		{
-			"key": "refresh_token",
-			"value": ""
 		}
 	]
 }
